@@ -1,0 +1,35 @@
+#ifndef SPINTUNEMOTER_H
+#define SPINTUNEMOTER_H
+
+
+class SpinTuneMoter
+{
+ public:
+  SpinTuneMoter(const unsigned int size = 400000){
+    spinTM = (unsigned long long*) (size*sizeof(unsigned long long));
+    memset(spinTM, 0, size * sizeof(unsigned long long));
+    cntTM = 0;
+  }
+  void Add(unsigned long long value){
+    if(cntTM < 400000){
+      spinTM[cntTM] = value;
+    }else{
+      printf("Memory Out of Range\n");
+    }
+    cntTM++;
+  }
+  unsigned long long At(int i) const{
+    if(i < cntTM){
+      return spinTM[i];
+    }else
+      return 0;
+  }
+  unsigned int Size() const{
+    return cntTM;
+  }
+ private:
+  unsigned long long *spinTM;
+  unsigned int cntTM;
+  
+}
+#endif

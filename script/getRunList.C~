@@ -1,0 +1,127 @@
+struct fill_profile
+{
+  int fill;
+  int polId;
+  int orient;
+  int tgtId;
+  float prof_r;
+  float prof_r_err;
+  float prof_r0;
+  float prof_r0_err;
+  float prof_rslope;
+  float prof_rslope_err;
+  float prof_pmax;
+  float prof_pmax_err;
+}profile;
+
+TSQLServer *db;
+TSQLRow *row;
+TSQLResult *res;
+
+double normHJ2PC[4][2][6];
+
+TFile *mFile;
+TFile *mFileOut;
+
+const int Npol = 4;
+char *pol[Npol] = {"B1U", "Y1D", "B2D", "Y2U"};
+char *beam = "255";
+const int Norient = 2;
+char *orient[Norient] = {"H", "V"};
+const int Nbeam = 2;
+char *ring[Nbeam] = {"BLU", "YEL"};
+int readSQL()
+{
+  initSQL();
+  //  getFillProfile(); 
+  getRunInfo();
+  clearSQL();
+  return 1;
+}
+void initSQL()
+{
+  char *server = "mysql://eicsrv1.sdcc.bnl.gov:3306/cnipol";
+  //char *server = "mysql://127.0.0.1:2212/cnipol";
+  char *user = "cnipol";
+  char *psswd = "(n!P0l";
+  
+  db = TSQLServer::Connect(server, user, psswd);
+}
+void clearSQL()
+{
+  delete db;
+}
+
+struct fill_profile getFillProfile(char *fill = "20695", char *polId = "0")
+{
+  char *dbname = "cnipol";
+  char *table = "fill_profile_new";  
+  char *sql = Form("select * from %s.%s where fill = %s and polarimeter_id = %s", dbname, table, fill, polId);
+  res = db->Query(sql);
+
+  int nrows = res->GetRowCount();
+  //printf("\nGot %d rows in result\n", nrows);
+  int nfields = res->GetFieldCount();
+  //for (int i = 0; i < nfields; i++)
+  //printf("%40s", res->GetFieldName(i));
+  //printf("\n");
+  //for (int i = 0; i < nfields*40; i++)
+  //printf("=");
+  //printf("\n");
+  for (int i = 0; i < nrows; i++) {
+    row = res->Next();
+
+    sscanf(row->GetField(0), "%d", &(profile.fill));
+    sscanf(row->GetField(1), "%d", &(profile.polId));
+    sscanf(row->GetField(2), "%d", &(profile.orient));
+    sscanf(row->GetField(3), "%d", &(profile.tgtId));
+    sscanf(row->GetField(4), "%f", &(profile.prof_r));
+    sscanf(row->GetField(5), "%f", &(profile.prof_r_err));
+    sscanf(row->GetField(6), "%f", &(profile.prof_r0));
+    sscanf(row->GetField(7), "%f", &(profile.prof_r0_err));
+    sscanf(row->GetField(8), "%f", &(profile.prof_rslope));
+    sscanf(row->GetField(9), "%f", &(profile.prof_rslope_err));
+    sscanf(row->GetField(10), "%f", &(profile.prof_pmax));
+    sscanf(row->GetField(11), "%f", &(profile.prof_pmax_err));
+    Printf("fill=%d polId=%d r=%lg", profile.fill, profile.polId, profile.prof_r);
+    delete row;
+  }
+
+  delete res;
+
+  return profile;
+}
+void getRunInfo(char *runlist = "run22_phys")
+{
+  FILE *fp = fopen(runlist, "w");
+  char* run = "32789.101.alpha";
+  char *dbname = "cnipol";
+  char *table = "run_info";  
+  //char *sql = Form("show columns from %s.run_period", dbname);
+  //char *sql = Form("select * from %s.%s where run_name = \'%s\'", dbname, table, run);
+  //char *sql = Form("show columns from %s.%s", dbname, table);
+  char *sql = Form("select run_name,start_time,polarization,measurement_type from %s.%s where polarization>0.1and polarization < 0.9 and start_time > '2021-12-04 00:00:00' and measurement_type=2", dbname, table);
+  res = db->Query(sql);
+
+  int nrows = res->GetRowCount();
+  //printf("\nGot %d rows in result\n", nrows);
+  int nfields = res->GetFieldCount();
+  //for (int i = 0; i < nfields; i++)
+  //printf("%40s", res->GetFieldName(i));
+  //printf("\n");
+  //for (int i = 0; i < nfields*40; i++)
+  //printf("=");
+  //printf("\n");
+  for (int i = 0; i < nrows; i++) {
+    row = res->Next();
+    fprintf(fp, "%s\n", row->GetField(0));
+    //Printf("%s %s %s", row->GetField(0), row->GetField(1), row->GetField(2));
+    Printf("%s %s %s %s", row->GetField(0), row->GetField(1), row->GetField(2), row->GetField(3));
+    //Printf("%s", row->GetField(0));
+    //Printf("%s", row->GetField(1));
+    delete row;
+  }
+
+  delete res;
+  fclose(fp);
+}
