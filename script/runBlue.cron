@@ -1,2 +1,2 @@
-*/1 * * * * /star/u/zchang/run22/cnipol/script/r22blue.csh > /dev/null
-0 * * * * /star/u/zchang/run22/cnipol/script/mR22.csh > /dev/null
+*/1 * * * * /star/u/xchu/run22/cnipol/script/r22blue.csh > /dev/null
+0 * * * * /star/u/xchu/run22/cnipol/script/mR22.csh > /dev/null

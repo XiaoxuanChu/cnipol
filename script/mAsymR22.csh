@@ -1,6 +1,6 @@
 #!/bin/csh
 
-set MY_HOME_DIR=/star/u/zchang
+set MY_HOME_DIR=/star/u/xchu
 
 if ( -e ${MY_HOME_DIR}/MASYMLOCK ) then
     exit;
@@ -9,10 +9,10 @@ else
 endif
 
 
-#source /star/u/zchang/.cshrc
-#source /star/u/zchang/.login
+#source /star/u/xchu/.cshrc
+#source /star/u/xchu/.login
 
-#source /star/u/zchang/run22/cnipol/script/r22setup.csh 22 > /dev/null
+#source /star/u/xchu/run22/cnipol/script/r22setup.csh 22 > /dev/null
 
 #set CNIPOL_ONLINE_DIR=/gpfs02/eic/eichome/cnipol/root
 
@@ -20,7 +20,7 @@ echo ${CNIPOL_RESULTS_DIR}
 set tag=run${RUN_ID}_phys
 set runlistcurr=${CNIPOL_RESULTS_DIR}/runXX/lists/$tag.curr
 set runlist=${CNIPOL_RESULTS_DIR}/runXX/lists/$tag
-root -b -q /star/u/zchang/run22/cnipol/script/getRunList.C\(\"$runlistcurr\"\)
+root -b -q /star/u/xchu/run22/cnipol/script/getRunList.C\(\"$runlistcurr\"\)
 
 #if ( `diff $runlist $runlistcurr` != "") then
 if (1) then

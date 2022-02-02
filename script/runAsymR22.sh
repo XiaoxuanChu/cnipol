@@ -1,5 +1,5 @@
 #!/bin/bash
-MY_HOME_DIR=/star/u/zchang
+MY_HOME_DIR=/star/u/xchu
 
 if [ -e ${MY_HOME_DIR}/ASYMLOCK ]; then
     exit;
@@ -9,9 +9,9 @@ fi
 
 #CHECKINGPERIOD=60 # in sec
 
-source /star/u/zchang/run22/cnipol/script/setup.sh 22 > /dev/null
+source /star/u/xchu/run22/cnipol/script/setup.sh 22 > /dev/null
 
-MY_REMOTE_HOME_DIR=/home/cfsd/zchang
+MY_REMOTE_HOME_DIR=/home/cfsd/xchu
 
 CNIPOL_REMOTE_BLUE_DATA_DIR=/home/blue/20$RUN_ID/data
 CNIPOL_REMOTE_YELLOW_DATA_DIR=/home/yellow/20$RUN_ID/data

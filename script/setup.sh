@@ -15,7 +15,7 @@ export CNIPOL_DB_PASSWORD="(n!P0l"
 #echo $CNIPOL_DB_PASSWORD
 
 # CNIPOL
-export CNIPOL_DIR=/star/u/zchang/run22/cnipol
+export CNIPOL_DIR=/star/u/xchu/run22/cnipol
 export CNIPOL_DATA_DIR=/gpfs02/eic/cnipol/run$RUN_ID/data
 export CNIPOL_RESULTS_DIR=/gpfs02/eic/cnipol/run$RUN_ID/root
 

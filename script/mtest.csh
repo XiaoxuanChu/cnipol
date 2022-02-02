@@ -1,6 +1,6 @@
 #!/bin/csh
 
-set MY_HOME_DIR=/star/u/zchang
+set MY_HOME_DIR=/star/u/xchu
 
 if ( -e ${MY_HOME_DIR}/MASYMLOCK ) then
     exit;
@@ -9,10 +9,10 @@ else
 endif
 
 
-#source /star/u/zchang/.cshrc
-#source /star/u/zchang/.login
+#source /star/u/xchu/.cshrc
+#source /star/u/xchu/.login
 
-#source /star/u/zchang/run22/cnipol/script/r22setup.csh 22 > /dev/null
+#source /star/u/xchu/run22/cnipol/script/r22setup.csh 22 > /dev/null
 
 #set CNIPOL_ONLINE_DIR=/gpfs02/eic/eichome/cnipol/root
 

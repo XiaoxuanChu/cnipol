@@ -1,17 +1,17 @@
 #!/bin/csh
 
 #set dir=`pwd`
-source /star/u/zchang/.login
-source /star/u/zchang/.cshrc
+source /star/u/xchu/.login
+source /star/u/xchu/.cshrc
 
-source /star/u/zchang/run22/cnipol/script/r22setup.csh 22 > /dev/null
+source /star/u/xchu/run22/cnipol/script/r22setup.csh 22 > /dev/null
 
-#set MY_REMOTE_HOME_DIR=/home/cfsd/zchang
+#set MY_REMOTE_HOME_DIR=/home/cfsd/xchu
 
 #set CNIPOL_REMOTE_BLUE_DATA_DIR=/home/blue/20$RUN_ID/data
 #set CNIPOL_REMOTE_YELLOW_DATA_DIR=/home/yellow/20$RUN_ID/data
 setenv CNIPOL_ONLINE_DIR /gpfs02/eic/eichome/cnipol/root
-#exec /star/u/zchang/run22/cnipol/script/runAsymR22.sh
+#exec /star/u/xchu/run22/cnipol/script/runAsymR22.sh
 
 #set fill=32923
 #set names = ("304" "305" "306" "307" "308" "309" "310" "311" "312" "313" "314" "315" "316" "317")

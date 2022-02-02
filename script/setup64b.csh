@@ -43,11 +43,11 @@ echo $CNIPOL_DB_PASSWORD
 
 # CNIPOL
 #setenv CNIPOL_DIR=~/pCpol/cnipol
-setenv CNIPOL_DIR /star/u/zchang/run22/cnipol
-setenv CNIPOL_DATA_DIR /gpfs02/eic/cnipol/zchang/run$RUN_ID/data
+setenv CNIPOL_DIR /star/u/xchu/run22/cnipol
+setenv CNIPOL_DATA_DIR /gpfs02/eic/cnipol/xchu/run$RUN_ID/data
 #setenv CNIPOL_DATA_DIR /gpfs02/eic/cnipol/run17/data
 #setenv CNIPOL_RESULTS_DIR /eicdata/eic0005/run$RUN_ID/root_rp
-setenv CNIPOL_RESULTS_DIR /gpfs02/eic/cnipol/zchang/run$RUN_ID/root
+setenv CNIPOL_RESULTS_DIR /gpfs02/eic/cnipol/xchu/run$RUN_ID/root
 
 setenv PATH $PATH\:$CNIPOL_DIR/build
 setenv LD_LIBRARY_PATH $LD_LIBRARY_PATH\:$CNIPOL_DIR/build

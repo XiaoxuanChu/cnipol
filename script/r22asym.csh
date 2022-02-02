@@ -1,5 +1,5 @@
 #!/bin/csh
-set MY_HOME_DIR=/star/u/zchang
+set MY_HOME_DIR=/star/u/xchu
 
 if ( -e ${MY_HOME_DIR}/ASYMLOCK ) then
     exit;
@@ -10,12 +10,12 @@ endif
 
 #set CHECKINGPERIOD=60 # in sec
 
-source /star/u/zchang/.cshrc
-source /star/u/zchang/.login
+source /star/u/xchu/.cshrc
+source /star/u/xchu/.login
 
-source /star/u/zchang/run22/cnipol/script/r22setup.csh 22 > /dev/null
+source /star/u/xchu/run22/cnipol/script/r22setup.csh 22 > /dev/null
 
-setenv MY_REMOTE_HOME_DIR /home/cfsd/zchang
+setenv MY_REMOTE_HOME_DIR /home/cfsd/xchu
 setenv CNIPOL_ONLINE_DIR /gpfs02/eic/eichome/cnipol/root
 
 set CNIPOL_REMOTE_BLUE_DATA_DIR=/home/blue/20$RUN_ID/data
@@ -54,8 +54,8 @@ if ("$file_list" != "") then
 		   wait
                    @ counter = 0
                  endif
-		 /usr/bin/nohup  /star/u/zchang/run22/cnipol/script/runpc.csh ${run_name} >& /dev/null &
-		#/star/u/zchang/run22/cnipol/script/runpc.csh ${run_name} >& /dev/null
+		 /usr/bin/nohup  /star/u/xchu/run22/cnipol/script/runpc.csh ${run_name} >& /dev/null &
+		#/star/u/xchu/run22/cnipol/script/runpc.csh ${run_name} >& /dev/null
                 @ counter += 1
 	end
 	cat ${RUNLIST} | sort | uniq > ${RUNLIST}.bak
@@ -63,8 +63,8 @@ if ("$file_list" != "") then
 endif
 
 wait
-#/star/u/zchang/run22/cnipol/script/mAsymR22.csh
-#/star/u/zchang/run22/cnipol/script/mAlphaR22.csh
+#/star/u/xchu/run22/cnipol/script/mAsymR22.csh
+#/star/u/xchu/run22/cnipol/script/mAlphaR22.csh
 rm ${MY_HOME_DIR}/ASYMLOCK
 #sleep ${CHECKINGPERIOD}
 
