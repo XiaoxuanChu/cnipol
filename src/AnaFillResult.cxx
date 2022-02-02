@@ -1518,7 +1518,7 @@ void AnaFillResult::UpdateExternGraphRange()
       for(vector<TGraphErrors*>::const_iterator it = grs.begin(); it != grs.end(); it++)
       {
          TGraphErrors *gr = *it;
-         for (Int_t i=0; i<gr->GetN(); ++i) { gr->GetPoint(i, x, y); gr->SetPoint(i, x - fStartTime, y); Printf("time diff: %.0lf start: %ld bc: %lf", x-fStartTime, fStartTime, y);
+         for (Int_t i=0; i<gr->GetN(); ++i) { gr->GetPoint(i, x, y); gr->SetPoint(i, x - fStartTime, y); //Printf("time diff: %.0lf start: %ld bc: %lf", x-fStartTime, fStartTime, y);
 }
       }
    }

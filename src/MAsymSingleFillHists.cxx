@@ -350,8 +350,8 @@ void MAsymSingleFillHists::PostFill(AnaFillResult &afr)
          gr->SetMarkerStyle(20);
          gr->SetMarkerColor(RunConfig::DetAsColor(det));
          gr->SetMarkerSize(1);
-         Printf("PostFill: %s det: %d", "hBCVsFillTime", det);
-         gr->Print();//zchang debug
+         //Printf("PostFill: %s det: %d", "hBCVsFillTime", det);
+         //gr->Print();//zchang debug
          hBCVsFillTime_->GetListOfFunctions()->Add(gr, "p");
          det++;
       }

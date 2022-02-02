@@ -89,12 +89,15 @@ void AnaFillExternResult::LoadAgsInfo(opencdev::LogReader &log_reader)
 void AnaFillExternResult::LoadAgsInfo(opencdev::LogReader &log_reader, int fillId)
 {
    opencdev::result_t ags_pol_result;
-
-   log_reader.query_fill("RHIC/Analysis/FDAImport/FDAcombined", fillId, &ags_pol_result);
+   //log_reader.query_fill("RHIC/Analysis/FDAImport/FDAcombined", fillId, &ags_pol_result);
+   //newer agsPolT2 and agsPolT2Err from FDAinj.logreq
+   log_reader.query_fill("RHIC/Analysis/FDAImport/FDAinj", fillId, &ags_pol_result);
 
    {
-        const map<opencdev::cdev_time_t, double> &values = ags_pol_result["agsPolT1"];
-        const map<opencdev::cdev_time_t, double> &errors = ags_pol_result["agsPolT1Err"];
+        //const map<opencdev::cdev_time_t, double> &values = ags_pol_result["agsPolT1"];
+        //const map<opencdev::cdev_time_t, double> &errors = ags_pol_result["agsPolT1Err"];
+        const map<opencdev::cdev_time_t, double> &values = ags_pol_result["agsPolT2"];
+        const map<opencdev::cdev_time_t, double> &errors = ags_pol_result["agsPolT2Err"];
         fAgsPolFitGraph = new TGraphErrors(values.size());
         int i = 0;
         std::map<opencdev::cdev_time_t, double>::const_iterator ie = errors.begin();
@@ -167,8 +170,14 @@ void AnaFillExternResult::LoadInfo(UInt_t fillId)
    if (fillId == 17699) fTimeEventLumiOn = (time_t)1370651445;
 
    opencdev::result_t bc_result;
-   log_reader.query_fill("RHIC/Polarimeter/Blue/biasReadbacks", fillId, &bc_result);
-   log_reader.query_fill("RHIC/Polarimeter/Yellow/biasReadbacks", fillId, &bc_result);
+   //log_reader.query_fill("RHIC/Polarimeter/Blue/biasReadbacks", fillId, &bc_result);
+   //sleep(5);
+   //log_reader.query_fill("RHIC/Polarimeter/Yellow/biasReadbacks", fillId, &bc_result);
+   //sleep(5);
+   if (fTimeEventLumiOn && fTimeEventLumiOff) {
+      log_reader.query_timerange("RHIC/Polarimeter/Blue/biasReadbacks", fTimeEventLumiOn-3600, fTimeEventLumiOff, &bc_result);
+      log_reader.query_timerange("RHIC/Polarimeter/Yellow/biasReadbacks", fTimeEventLumiOn-3600, fTimeEventLumiOff, &bc_result);
+   }
    //Printf("bias readbacks");
    for(opencdev::result_t::const_iterator it = bc_result.begin(); it != bc_result.end(); it++)
    {
