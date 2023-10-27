@@ -24,7 +24,7 @@ string SshLogReader::GetSshCommand(const string &logger, const string &args)
 
    snprintf(buf, sizeof(buf),
             "ssh yellpc \""
-            "setenv PATH /usr/controls/bin; setenv LD_LIBRARY_PATH /ride/release/X86/lib;"
+            "setenv PATH /usr/controls/bin; setenv LD_LIBRARY_PATH /lib:/ride/release/X86/lib;"
             "exportLoggerData"
             " -logger '%s'"
             // Print 15 digits after decimal point. We are going to check if

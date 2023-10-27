@@ -35,6 +35,7 @@ void getRunInfo(const char* runlist)
   int nfields = res->GetFieldCount();
   for (int i = 0; i < nrows; i++) {
     row = res->Next();
+    if (strcmp(row->GetField(0), "33074.102")==0) continue;
     fprintf(fp, "%s\n", row->GetField(0));
     //Printf("%s %s %s %s", row->GetField(0), row->GetField(1), row->GetField(2), row->GetField(3));
     delete row;

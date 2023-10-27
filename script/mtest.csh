@@ -12,9 +12,9 @@ endif
 #source /star/u/xchu/.cshrc
 #source /star/u/xchu/.login
 
-#source /star/u/xchu/run22/cnipol/script/r22setup.csh 22 > /dev/null
+source /star/u/xchu/run22/cnipol/script/r22setup.csh 22 > /dev/null
 
-#set CNIPOL_ONLINE_DIR=/gpfs02/eic/eichome/cnipol/root
+set CNIPOL_ONLINE_DIR=/gpfs02/eic/eichome/cnipol/root
 
 echo ${CNIPOL_RESULTS_DIR}
 set file=$1

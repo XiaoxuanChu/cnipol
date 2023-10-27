@@ -16,8 +16,8 @@ setenv CNIPOL_ONLINE_DIR /gpfs02/eic/eichome/cnipol/root
 #set fill=32923
 #set names = ("304" "305" "306" "307" "308" "309" "310" "311" "312" "313" "314" "315" "316" "317")
 #set names = ("005" "205" "206")
-set fill=32960
-set names = ("204" "005" "104")
+set fill=33046
+set names = ("107.alpha0")
 set opt=""
 #set opt="--spin-pattern 13 --fill-pattern 1"
 #set names = ("305" "304" "105")
